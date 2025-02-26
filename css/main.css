@@ -73,7 +73,7 @@ body{font-family: 'Source Serif 4', 'Pretendard', sans-serif;  line-height: 1.5;
 /* menu */
 
 /* header */
-#header{position: absolute; z-index: 100; width: 100%;}
+#header{position: fixed; z-index: 100; width: 100%;}
 #header .inner{position: relative; z-index: 10; max-width: 100%; padding-top: 40px; display: flex; justify-content: space-between;  align-items: center;}
 #header .inner h1 a{display: block; font-size: 0; background: url('../imges/logo_w.png')no-repeat center/100%; width: 220px; height: 40px;}
 #header .inner .gnb{transition: all 0.5s; display: flex; justify-content: center; margin-right:100px ;}
