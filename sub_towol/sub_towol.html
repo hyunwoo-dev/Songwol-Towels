@@ -382,6 +382,50 @@
 
 
 
+    <script>
+      let lastScrollY = window.scrollY;
+      
+      // header를 먼저 찾고, 그 안의 .inner를 선택
+      const header = document.getElementById('header');
+      const inner = header.querySelector('.inner');
+      
+      inner.style.transition = 'transform 0.3s ease, background 0.3s ease'; // 배경 전환도 부드럽게
+      
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+      
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          inner.style.background = 'rgba(0,0,0,0)'; // 스크롤 내릴 때 배경 투명
+          inner.style.transform = 'translateY(-100%)'; // 아래로 스크롤 시 .inner 숨기기
+        } else {
+          if (currentScrollY === 0) {
+            inner.style.background = 'transparent'; // 맨 위에 있을 때는 배경이 투명하게
+          } else {
+            inner.style.background = 'rgba(255,255,255,0.7)'; // 위로 스크롤 시 배경이 어두워짐
+          }
+          inner.style.transform = 'translateY(0)'; // 위로 스크롤 시 .inner 보이기
+        }
+      
+        lastScrollY = currentScrollY;
+      });
+      
+      // 마우스 올리면 배경 사라지게, 떼면 다시 원래대로
+      inner.addEventListener('mouseenter', () => {
+        inner.style.background = 'rgba(0,0,0,0)'; // 마우스 올리면 배경 투명
+      });
+      
+      inner.addEventListener('mouseleave', () => {
+        // 마우스 뗄 때 원래 배경으로 되돌리기
+        if (window.scrollY === 0) {
+          inner.style.background = 'transparent';
+        } else {
+          inner.style.background = 'rgba(255,255,255,0.7)';
+        }
+      });
+      
+      
+        
+        </script>
 </body>
 
 </html>
